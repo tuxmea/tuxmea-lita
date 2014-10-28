@@ -1,7 +1,11 @@
 class lita::install {
-    Package {
+    anchor { 'lita::install::begin': } ->
+    package { 'ruby':
+        ensure   => present,
+    } ->
+    package { 'lita':
         ensure   => present,
         provider => gem,
-    }
-    package { 'lita': }
+    } ->
+    anchor { 'lita::install::end': }
 }
