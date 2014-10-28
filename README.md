@@ -3,6 +3,8 @@ puppet-lita
 
 Puppet Module for Lita ChatOps
 
+[![Build Status](https://travis-ci.org/tuxmea/tuxmea-lita.png)](https://travis-ci.org/tuxmea/tuxmea-lita)
+
 This module will install gem packages only !!
 
 Usage
