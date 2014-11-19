@@ -1,0 +1,6 @@
+Lita.configure do |config|
+  config.robot.name      = "<%= @lita_name %>"
+  config.robot.locale    = :en
+  config.robot.log_level = :<%= @log_level %>
+  config.http.port       = <%= @http_port %>
+

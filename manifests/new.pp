@@ -13,4 +13,10 @@ class lita::new {
         require => File["/etc/lita/${lita_name}"],
         creates => "/etc/lita/${lita_name}/Gemfile",
     }
+    concat { "/etc/lita/${lita_name}/Gemfile":
+        ensure => present,
+    }
+    concat { "/etc/lita/${lita_name}/lita_config.rb":
+        ensure => present,
+    }
 }

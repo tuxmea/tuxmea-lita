@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# Start Stop script for lita
+#
+case $1 in
+    'start')
+        nohup /usr/bin/lita -a <%= @adapter %> &
+    ;;
+    'stop')
+        killall /usr/bin/lita
+    ;;
+    '*')
+        echo "Usage: $0 [start|stop]"
+    ;;
+esac
