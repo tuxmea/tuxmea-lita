@@ -2,7 +2,11 @@ define lita::handler {
     $handler        = $title
     $lita_name      = $lita::lita_name
     $handler_config = $lita::handler_config
-    validate_string($handler)
+    validate_string($handler, $lita_name)
+    validate_hash($handler_config)
+    if ! $handler_config[$handler] {
+        fail("No config set for handler: ${handler}")
+    }
     package { "lita-${handler}":
         ensure   => present,
         provider => gem,
@@ -14,7 +18,7 @@ define lita::handler {
     }
     concat::fragment { "config_${lita_name}_${handler}":
         target  => "/etc/lita/${lita_name}/lita_config.rb",
-        content => template("lita/config_handler.erb"),
+        content => template("lita/config_handler_${handler}.erb"),
         order   => '50',
     }
 }
