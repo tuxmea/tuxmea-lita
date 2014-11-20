@@ -18,4 +18,5 @@ class lita::params {
     $log_level      = 'info'
     $adapter_config = {}
     $handler_config = {}
+    $known_handler  = ['jenkins']
 }

@@ -3,7 +3,7 @@ require 'rake/tasklib'
 require 'rspec/core/rake_task'
 require 'rubygems'
 require 'puppetlabs_spec_helper/rake_tasks'
-require 'puppet-lint'
+require 'puppet-lint/tasks/puppet-lint'
 
 desc 'Run the tests'
 RSpec::Core::RakeTask.new(:do_test) do |t|
@@ -11,22 +11,18 @@ RSpec::Core::RakeTask.new(:do_test) do |t|
   t.pattern = 'spec/*/*_spec.rb'
 end
 
-desc 'Run puppet-lint on the one manifests'
-task :litalint do
-  PuppetLint.configuration.send('disable_80chars')
-  PuppetLint.configuration.ignore_paths = ['vendor/**/*.pp']
-  PuppetLint.configuration.with_filename = true
+Puppet::Util::Log.level = :warning
+Puppet::Util::Log.newdestination(:console)
 
-  linter = PuppetLint.new
-  matched_files = FileList['spec/fixtures/modules/lita/manifests/**/*.pp']
-
-  matched_files.to_a.each do |puppet_file|
-    linter.file = puppet_file
-    linter.run
-  end
-
-  fail if linter.errors? || (linter.warnings? && PuppetLint.configuration.fail_on_warnings)
+PuppetLint::RakeTask.new :lint do |config|
+    config.pattern = 'spec/fixtures/modules/lita/manifests/*.pp'
+    config.disable_checks = ['80chars', 'class_inherits_from_params_class', 'autoloader_layout']
+    config.relative = false
+    config.with_context = true
+    config.show_ignored = true
 end
 
-task :default => [:spec_prep, :do_test, :litalint, :spec_clean]
+desc 'Run puppet-lint on the manifests'
+
+task :default => [:spec_prep, :do_test, :lint, :spec_clean]
 task :test => [:default]

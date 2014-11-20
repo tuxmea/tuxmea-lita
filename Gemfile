@@ -5,7 +5,8 @@ group :development, :test do
   gem 'rspec-puppet',            :require => false, :github => 'rodjek/rspec-puppet', :branch => 'master'
   gem 'puppetlabs_spec_helper',  :require => false
   gem 'serverspec',              :require => false
-  gem 'puppet-lint',             :require => false
+#  gem 'puppet-lint',             :require => false
+  gem 'puppet-lint',             :require => false, :github => 'rodjek/puppet-lint', :branch => 'master'
   gem 'beaker',                  :require => false
   gem 'beaker-rspec',            :require => false
   gem 'pry',                     :require => false

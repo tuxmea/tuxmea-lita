@@ -1,3 +1,9 @@
+# Class lita::adapter
+#
+# lita may have one adapter only.
+#
+# private subclass
+#
 class lita::adapter (
     $adapter_config = $lita::adapter_config
 ){

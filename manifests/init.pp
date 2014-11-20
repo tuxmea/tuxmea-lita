@@ -38,6 +38,7 @@ class lita (
     $adapter_config = $lita::params::adapter_config,
     $handler_config = $lita::params::handler_config,
 ) inherits lita::params {
+    $known_handler = $lita::params::known_handler
     include lita::install
     include lita::new
     include lita::config
