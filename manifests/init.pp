@@ -39,6 +39,10 @@ class lita (
     $handler_config = $lita::params::handler_config,
 ) inherits lita::params {
     $known_handler = $lita::params::known_handler
+    include stdlib
+    class { lita::setup:
+        stage => 'setup',
+    }
     include lita::install
     include lita::new
     include lita::config
