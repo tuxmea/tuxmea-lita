@@ -16,7 +16,8 @@ class lita::params {
     $redis          = {}
     $http_port      = '8080'
     $log_level      = 'info'
-    $adapter_config = {}
+    $adapter_config = { 'shell' => {} }
     $handler_config = {}
     $known_handler  = ['jenkins']
+    $known_adapter  = ['shell', 'irc', 'hipchat', 'xmpp']
 }

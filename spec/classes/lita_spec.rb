@@ -7,6 +7,9 @@ describe 'lita', :type => :class  do
     } }
 
     context 'with default values' do
+        let(:params) {{
+            :adapter => 'shell'
+        }}
         it { should contain_class('stdlib') }
         it { should contain_class('stdlib::stages') }
         it { should contain_stage('setup') }
@@ -29,7 +32,6 @@ describe 'lita', :type => :class  do
         it { should contain_concat('/etc/lita/lita/Gemfile') }
         it { should contain_concat('/etc/lita/lita/lita_config.rb') }
         it { should contain_concat__fragment('Gemfile_lita_header') }
-        it { should contain_concat__fragment('Gemfile_lita_adapter') }
         it { should contain_concat__fragment('config_lita_header') }
         it { should contain_concat__fragment('config_lita_adapter') }
         it { should contain_concat__fragment('config_lita_footer') }
@@ -37,12 +39,23 @@ describe 'lita', :type => :class  do
 
     context 'with explicit data' do
         let(:params) {{
-            :adapter => 'xmpp'
+            :adapter => 'xmpp',
+            :adapter_config => { 'xmpp' => { 'jid' => 'lita' } }
         }}
         it { should contain_package('lita-xmpp').with_provider('gem') }
         it { should contain_class('lita').with_adapter('xmpp') }
+        it { should contain_concat__fragment('Gemfile_lita_adapter') }
         it { should contain_file('/etc/init.d/lita').with_content(/xmpp/) }
         it { should contain_service('lita') }
+    end
+
+    context 'with explicit lita_name' do
+        let(:params) {{
+            :lita_name => 'foo',
+            :adapter => 'shell'
+        }}
+        it { should contain_file('/etc/lita/foo/Gemfile') }
+        it { should contain_file('/etc/lita/foo/lita_config.rb') }
     end
 
 end

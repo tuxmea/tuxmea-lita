@@ -39,6 +39,7 @@ class lita (
     $handler_config = $lita::params::handler_config,
 ) inherits lita::params {
     $known_handler = $lita::params::known_handler
+    $known_adapter = $lita::params::known_adapter
     include stdlib
     class { lita::setup:
         stage => 'setup',
@@ -46,9 +47,11 @@ class lita (
     include lita::install
     include lita::new
     include lita::config
+    include lita::validate_adapter
     include lita::adapter
     include lita::service
-    Class['lita::install'] -> Class['lita::new'] -> Class['lita::config'] -> Class['lita::adapter'] ~> Class['lita::service']
+    Class['validate_adapter'] -> Class['lita::install'] -> Class['lita::new'] -> Class['lita::config'] -> Class['lita::adapter'] ~> Class['lita::service']
     Class['lita::install'] ~> Class['lita::service']
+    Class['lita::config'] ~> Class['lita::service']
     Class['lita::adapter'] ~> Class['lita::service']
 }
