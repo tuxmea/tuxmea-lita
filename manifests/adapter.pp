@@ -10,7 +10,7 @@ class lita::adapter (
     private("Class lita::adapter is private and may not be called from ${caller_module_name}")
     $adapter = $lita::adapter
     $lita_name = $lita::lita_name
-    if ! $adapter == 'shell' {
+    if $adapter != 'shell' {
       package { "lita-${adapter}":
           ensure   => present,
           provider => gem,

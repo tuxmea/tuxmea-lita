@@ -15,6 +15,9 @@ describe 'lita::handler' do
       } }
 
       it { should contain_package('lita-jenkins') }
-      it { should have_concat__fragment_resource_count(6) }
+      it { should contain_lita__handler('jenkins') }
+      it { should contain_concat__fragment('Gemfile_lita_jenkins') }
+      it { should contain_concat__fragment('config_lita_jenkins') }
+      it { should have_concat__fragment_resource_count(7) }
   end
 end
