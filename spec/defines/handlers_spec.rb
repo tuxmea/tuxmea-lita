@@ -19,6 +19,7 @@ describe 'lita::handler' do
       it { should contain_concat__fragment('Gemfile_lita_jenkins') }
       it { should contain_concat__fragment('config_lita_jenkins') }
       it { should have_concat__fragment_resource_count(6) }
+      it { should contain_lita__validate_handler('jenkins') }
   end
   context 'jenkins and xmpp' do
       let(:title) { 'jenkins' }

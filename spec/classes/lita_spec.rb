@@ -22,6 +22,7 @@ describe 'lita', :type => :class  do
         it { should contain_class('lita::install') }
         it { should contain_class('lita::service') }
         it { should contain_class('lita::adapter') }
+        it { should contain_class('lita::validate_adapter') }
         it { should contain_file('/etc/lita') }
         it { should contain_file('/etc/lita/lita') }
         it { should contain_file('/etc/lita/lita/Gemfile') }
