@@ -1,25 +1,25 @@
   config.robot.adapter          = :xmpp
-  config.adapter.jid            = "<%= @adapter_config['jid'] %>"
-  config.adapter.password       = "<%= @adapter_config['password'] %>"
-  config.adapter.muc_domain     = "<%= @adapter_config['muc_domain'] %>"
+  config.adapter.jid            = "<%= @adapter_config['xmpp']['jid'] %>"
+  config.adapter.password       = "<%= @adapter_config['xmpp']['password'] %>"
+  config.adapter.muc_domain     = "<%= @adapter_config['xmpp']['muc_domain'] %>"
 
-  <%- if @adapter_config['debug'] -%>
-  config.adapter.debug          = <%= @adapter_config['debug'] %>
+  <%- if @adapter_config['xmpp']['debug'] -%>
+  config.adapter.debug          = <%= @adapter_config['xmpp']['debug'] %>
   <%- else -%>
   config.adapter.debug          = false
   <%- end -%>
 
-  <%- if @adapter_config['room'] -%>
-  config.adapter.rooms          = ["<%= @adapter_config['room'] %>"]
+  <%- if @adapter_config['xmpp']['room'] -%>
+  config.adapter.rooms          = ["<%= @adapter_config['xmpp']['room'] %>"]
   <%- else -%>
   config.adapter.rooms          = :all
   <%- end -%>
 
-  <%- if @adapter_config['connect_domain'] -%>
-  config.adapter.connect_domain = "<%= @adapter_config['connect_domain'] %>"
+  <%- if @adapter_config['xmpp']['connect_domain'] -%>
+  config.adapter.connect_domain = "<%= @adapter_config['xmpp']['connect_domain'] %>"
   <%- end -%>
 
-  <%- if @adapter_config['mention_name'] -%>
-  config.robot.mention_name     = "<%= @adapter_config['mention_name'] %>"
+  <%- if @adapter_config['xmpp']['mention_name'] -%>
+  config.robot.mention_name     = "<%= @adapter_config['xmpp']['mention_name'] %>"
   <%- end -%>
 

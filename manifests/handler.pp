@@ -32,4 +32,7 @@ define lita::handler {
         content => template("lita/config_handler_${handler}.erb"),
         order   => '50',
     }
+    lita::validate_handler { $handler:
+        handler_config => $handler_config,
+    }
 }

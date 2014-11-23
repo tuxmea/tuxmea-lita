@@ -1,12 +1,12 @@
   config.robot.adapter          = :irc
-  config.adapters.irc.server    = "<%= @adapter_config['server'] %>"
-  config.adapters.irc.channels  = ["#<%= @adapter_config['channel'] %>"]
-  config.adapters.irc.user      = "<%= @adapter_config['username'] %>"
+  config.adapters.irc.server    = "<%= @adapter_config['irc']['server'] %>"
+  config.adapters.irc.channels  = ["#<%= @adapter_config['irc']['channel'] %>"]
+  config.adapters.irc.user      = "<%= @adapter_config['irc']['username'] %>"
   config.adapters.irc.realname  = "<%= @lita_name %>"
-  config.adapters.irc.password  = "<%= @adapter_config['password'] %>"
+  config.adapters.irc.password  = "<%= @adapter_config['irc']['password'] %>"
 
-  <%- if @adapter_config['log_level'] -%>
-  config.adapters.irc.log_level = :<%= @adapter_config['log_level'] %>
+  <%- if @adapter_config['irc']['log_level'] -%>
+  config.adapters.irc.log_level = :<%= @adapter_config['irc']['log_level'] %>
   <%- else -%>
   config.adapters.irc.log_level = :info
   <%- end -%>

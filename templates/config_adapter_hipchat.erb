@@ -1,16 +1,16 @@
   config.robot.adapter               = :hipchat
-  config.adapters.hipchat.jid        = "<%= @adapter_config['jid'] %>"
-  config.adapters.hipchat.password   = "<%= @adapter_config['password'] %>"
-  config.adapters.hipchat.muc_domain = "<%= @adapter_config['muc_domain'] %>"
+  config.adapters.hipchat.jid        = "<%= @adapter_config['hipchat']['jid'] %>"
+  config.adapters.hipchat.password   = "<%= @adapter_config['hipchat']['password'] %>"
+  config.adapters.hipchat.muc_domain = "<%= @adapter_config['hipchat']['muc_domain'] %>"
 
-  <%- if @adapter_config['debug'] -%>
+  <%- if @adapter_config['hipchat']['debug'] -%>
   config.adapters.hipchat.debug      = true
   <%- else -%>
   config.adapters.hipchat.debug      = false
   <%- end -%>
 
-  <%- if @adapter_config['room'] -%>
-  config.adapters.hipchat.rooms      = <%= @adapter_config['room'] %>
+  <%- if @adapter_config['hipchat']['room'] -%>
+  config.adapters.hipchat.rooms      = <%= @adapter_config['hipchat']['room'] %>
   <%- else -%>
   config.adapters.hipchat.rooms      = :all
   <%- end -%>
