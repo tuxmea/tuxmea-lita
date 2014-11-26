@@ -3,7 +3,6 @@
 # private subclass
 #
 class lita::new {
-    private("Class lita::new is private and my not be called from ${caller_module_name}")
     $lita_name = $lita::lita_name
     file { '/etc/lita':
         ensure => directory,

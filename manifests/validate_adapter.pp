@@ -4,7 +4,6 @@
 # private class
 #
 class lita::validate_adapter {
-    private("Private subclass lita::validate_adapter - do not call directly")
     $adapter = $lita::adapter
     $adapter_config = $lita::adapter_config
     $known_adapter = $lita::known_adapter

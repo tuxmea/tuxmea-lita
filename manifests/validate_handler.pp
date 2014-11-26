@@ -5,7 +5,6 @@
 define lita::validate_handler(
     $handler_config,
 ){
-    private("Do not call lita::validate_handler directly.")
     $handler = $title
     case $handler {
         'jenkins': {

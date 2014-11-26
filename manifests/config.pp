@@ -3,7 +3,6 @@
 # private subclass
 #
 class lita::config {
-    private("Class lita::config is private and may not be called from ${caller_module_name}")
     $lita_name = $lita::lita_name
     concat::fragment { "Gemfile_${lita_name}_header":
         target  => "/etc/lita/${lita_name}/Gemfile",
