@@ -2,14 +2,16 @@
 #
 # Start Stop script for lita
 #
+source /usr/local/rvm/scripts/rvm
 case $1 in
-    'start')
-        nohup /usr/bin/lita -a <%= @adapter %> &
+    start)
+        cd /etc/lita/<%= @lita_name %>
+        /usr/local/rvm/gems/ruby-2.1.5/bin/lita start -d
     ;;
-    'stop')
-        killall /usr/bin/lita
+    stop)
+        /usr/local/rvm/gems/ruby-2.1.5/bin/lita kill
     ;;
-    '*')
+    *)
         echo "Usage: $0 [start|stop]"
     ;;
 esac

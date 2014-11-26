@@ -25,4 +25,10 @@ class lita::adapter (
         content => template("lita/config_adapter_${adapter}.erb"),
         order   => '02',
     }
+    concat { "/etc/lita/${lita_name}/Gemfile":
+        ensure => present,
+    }
+    concat { "/etc/lita/${lita_name}/lita_config.rb":
+        ensure => present,
+    }
 }

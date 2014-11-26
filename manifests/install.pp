@@ -4,12 +4,12 @@
 #
 class lita::install {
     anchor { 'lita::install::begin': } ->
-    package { 'ruby':
-        ensure   => present,
+    package { 'g++':
+        ensure => present,
     } ->
-    package { 'lita':
-        ensure   => present,
-        provider => gem,
+    rvm_gem { 'lita':
+        ensure => present,
+        ruby_version => '2.1.5',
     } ->
     anchor { 'lita::install::end': }
 }
