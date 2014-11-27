@@ -3,7 +3,7 @@
 # private subclass
 #
 class lita::install {
-    package { 'g++':
+    package { 'g++':
         ensure => present,
     }
 }

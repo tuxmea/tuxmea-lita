@@ -14,7 +14,6 @@ describe 'lita::handler' do
           :concat_basedir         => '/dne'
       } }
 
-      it { should contain_package('lita-jenkins') }
       it { should contain_lita__handler('jenkins') }
       it { should contain_concat__fragment('Gemfile_lita_jenkins') }
       it { should contain_concat__fragment('config_lita_jenkins') }

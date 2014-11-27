@@ -24,12 +24,8 @@ describe 'lita', :type => :class  do
         it { should contain_class('lita::adapter') }
         it { should contain_class('lita::validate_adapter') }
         it { should contain_file('/etc/lita') }
-        it { should contain_file('/etc/lita/lita') }
         it { should contain_file('/etc/lita/lita/Gemfile') }
         it { should contain_file('/etc/lita/lita/lita_config.rb') }
-        it { should contain_package('ruby') }
-        it { should contain_package('gem') }
-        it { should contain_package('lita').with_provider('gem') }
         it { should contain_concat('/etc/lita/lita/Gemfile') }
         it { should contain_concat('/etc/lita/lita/lita_config.rb') }
         it { should contain_concat__fragment('Gemfile_lita_header') }
@@ -43,10 +39,9 @@ describe 'lita', :type => :class  do
             :adapter => 'xmpp',
             :adapter_config => { 'xmpp' => { 'jid' => 'lita' } }
         }}
-        it { should contain_package('lita-xmpp').with_provider('gem') }
         it { should contain_class('lita').with_adapter('xmpp') }
         it { should contain_concat__fragment('Gemfile_lita_adapter') }
-        it { should contain_file('/etc/init.d/lita').with_content(/xmpp/) }
+        it { should contain_file('/etc/init.d/lita') }
         it { should contain_service('lita') }
     end
 

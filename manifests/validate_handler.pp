@@ -11,7 +11,7 @@ define lita::validate_handler(
             validate_string($handler_config[$handler]['url'])
         }
         default: {
-            fail("No matching handler varification found in lita::validate_handler.")
+            fail('No matching handler varification found in lita::validate_handler.')
         }
     }
 }

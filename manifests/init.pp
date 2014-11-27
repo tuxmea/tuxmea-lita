@@ -41,7 +41,7 @@ class lita (
     $known_handler = $lita::params::known_handler
     $known_adapter = $lita::params::known_adapter
     include stdlib
-    class { lita::setup:
+    class { 'lita::setup':
         stage => 'setup',
     }
     include lita::install
