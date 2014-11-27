@@ -10,10 +10,6 @@ class lita::adapter (
     $adapter = $lita::adapter
     $lita_name = $lita::lita_name
     if $adapter != 'shell' {
-      package { "lita-${adapter}":
-          ensure   => present,
-          provider => gem,
-      }
       concat::fragment { "Gemfile_${lita_name}_adapter":
         target  => "/etc/lita/${lita_name}/Gemfile",
         content => template('lita/Gemfile_adapter.erb'),

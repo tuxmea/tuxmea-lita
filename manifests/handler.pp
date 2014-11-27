@@ -18,10 +18,6 @@ define lita::handler {
     if ! $handler_config[$handler] {
         fail("No config set for handler: ${handler}")
     }
-    rvm_gem { "lita-${handler}":
-        ensure       => present,
-        ruby_version => '2.1.5',
-    }
     concat::fragment { "Gemfile_${lita_name}_${handler}":
         target  => "/etc/lita/${lita_name}/Gemfile",
         content => template('lita/Gemfile_handler.erb'),

@@ -1,1 +1,1 @@
-gem "lita-<%= @handler %>"
+gem "lita-<%= @handler %>"<% if @handler_config[@handler]['source'] %>, :git => "<%= @handler_config[@handler]['source'] %>"<% end %>

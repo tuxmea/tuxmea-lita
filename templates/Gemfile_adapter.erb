@@ -1,1 +1,1 @@
-gem "lita-<%= @adapter %>"
+gem "lita-<%= @adapter %>"<% if @adapter_config[@adapter]['source'] %>, :git => "<%= @adapter_config[@adapter]['source'] %>"<% end %>
