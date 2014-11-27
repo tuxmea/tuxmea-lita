@@ -17,20 +17,31 @@ Standard default installation:
 Install with parameters
   ```
   class { lita:
-    lita_name => 'ChatOps'
-    adapter        => [ 'shell' | 'xmpp' | 'hipchat' ],
-    redis          => { host => '1.2.3.4', port => '1234' },
-    http_port      => '8082',
-    log_level      => [ 'debug' | 'info' | 'warn' | 'error' | 'fatal' ], 
-    adapter_config => { jid => 'user', password => 'pass', debug => false, muc_domain => 'conference.server.com' },
-    handler_config => { jenkins => { 'url' => 'http://server.com:8080' } },
+    lita_name => 'lita',
+    adapter => 'xmpp',
+    adapter_config => {
+      'xmpp' => {
+        'source' => 'https://github.com/tuxmea/lita-xmpp.git',
+        'jid' => 'lita@chatops',
+        'password' => 'puppet',
+        'muc_domain' => 'conference.chatops',
+        'connect_domain' => 'chatops.domain.com',
+        'rooms' => 'chatops'
+      }
+    },
   }
   ```
 
 Install handlers
   ```
-  lita::handler { 'dig': }
-  lita::handler { 'jenkins': }
+  lita::handler { 'jenkins':
+    lita_name => 'lita',
+    handler_config => {
+      'jenkins' => {
+        'url' => 'http://jenkins.domain.com:8080'
+      }
+    },
+  }
   ```
 
 Parameters
