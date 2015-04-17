@@ -5,7 +5,8 @@ Puppet Module for Lita ChatOps
 
 [![Build Status](https://travis-ci.org/tuxmea/tuxmea-lita.png)](https://travis-ci.org/tuxmea/tuxmea-lita)
 
-This module will install gem packages only !!
+This module will install systemwide rvm and ruby 2.1.5.
+All required software will get installed via rvm bundle.
 
 Usage
 =====
@@ -17,16 +18,16 @@ Standard default installation:
 Install with parameters
   ```
   class { lita:
-    lita_name => 'lita',
-    adapter => 'xmpp',
+    lita_name      => 'lita',
+    adapter        => 'xmpp',
     adapter_config => {
       'xmpp' => {
-        'source' => 'https://github.com/tuxmea/lita-xmpp.git',
-        'jid' => 'lita@chatops',
-        'password' => 'puppet',
-        'muc_domain' => 'conference.chatops',
+        'source'         => 'https://github.com/tuxmea/lita-xmpp.git',
+        'jid'            => 'lita@chatops',
+        'password'       => 'puppet',
+        'muc_domain'     => 'conference.chatops',
         'connect_domain' => 'chatops.domain.com',
-        'rooms' => 'chatops'
+        'rooms'          => 'chatops'
       }
     },
   }
@@ -35,7 +36,7 @@ Install with parameters
 Install handlers
   ```
   lita::handler { 'jenkins':
-    lita_name => 'lita',
+    lita_name      => 'lita',
     handler_config => {
       'jenkins' => {
         'url' => 'http://jenkins.domain.com:8080'
