@@ -50,7 +50,16 @@ class lita (
     include lita::validate_adapter
     include lita::adapter
     include lita::service
-    Class['validate_adapter'] -> Class['lita::install'] -> Class['lita::new'] -> Class['lita::config'] -> Class['lita::adapter'] ~> Class['lita::service']
+
+    anchor { 'lita::begin': } ->
+    Class['validate_adapter'] ->
+    Class['lita::install'] ->
+    Class['lita::new'] ->
+    Class['lita::config'] ->
+    Class['lita::adapter'] ~>
+    Class['lita::service'] ->
+    anchor { 'lita::end': }
+
     Class['lita::install'] ~> Class['lita::service']
     Class['lita::config'] ~> Class['lita::service']
     Class['lita::adapter'] ~> Class['lita::service']
